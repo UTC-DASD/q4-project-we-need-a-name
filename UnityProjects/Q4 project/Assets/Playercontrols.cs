@@ -19,12 +19,12 @@ public class Playercontrols : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInputActions.Player.Enable();
+        playerInputActions.Enable();
     }
 
     private void OnDisable()
     {
-        playerInputActions.Player.Disable();
+        playerInputActions.Disable();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
