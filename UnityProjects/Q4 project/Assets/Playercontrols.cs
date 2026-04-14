@@ -1,30 +1,20 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 public class Playercontrols : MonoBehaviour
 
 {
-    PlayerInputActions playerInputActions;
+    public PlayerInput playerInputActions;
     
 
     Rigidbody2D rb;
-    private float playerSpeed = 5f;
+    [SerializeField] private float playerSpeed;
     private Vector2 moveInput;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private bool isGrounded;
 
     private void Awake()
     {
-        playerInputActions = new PlayerInputActions();
         rb = GetComponent<Rigidbody2D>();
-    }
-
-   
-
-    private void OnEnable()
-    {
-        playerInputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerInputActions.Disable();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,19 +23,21 @@ public class Playercontrols : MonoBehaviour
     {
 
     }
-    void Update()
+    void FixedUpdate()
     {
-        MovePlayer();
-    }
-
-    private void MovePlayer()
-    {
-        moveInput=playerInputActions.Player.Movement.ReadValue<Vector2>();
         rb.linearVelocity = new Vector2(moveInput.x * playerSpeed, rb.linearVelocity.y);
     }
 
+    public void HorizontalMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();  
+    }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed && isGrounded)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+}
+}
 }
 
-internal class PlayerInputActions
-{
-}
