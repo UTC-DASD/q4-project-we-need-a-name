@@ -11,6 +11,8 @@ public class Playercontrols : MonoBehaviour
     private Vector2 moveInput;
     [SerializeField] private float jumpForce;
     [SerializeField] private bool isGrounded;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
 
     private void Awake()
     {
