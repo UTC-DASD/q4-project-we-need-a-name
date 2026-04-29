@@ -27,7 +27,7 @@ private int jumpsRemaining;
     {
             jumpsRemaining = maxJumps; // Initialize jumps
             // Perform the check every frame or just before the jump
-    isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
     }
     
     
@@ -46,26 +46,27 @@ private int jumpsRemaining;
         {
              // Add a ground check here for better feel
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isGrounded = false;
             jumpsRemaining--;
         }
         
     }
     private void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        // isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
 
         if (isGrounded)
         {
             jumpsRemaining = maxJumps; // Reset jumps when isgrounded
         }
     }
-    private void OnCollision2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Ground"))
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        jumpsRemaining = maxJumps;
-        isGrounded = true;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            jumpsRemaining = maxJumps;
+            isGrounded = true;
+        }
     }
-}
 }
 
