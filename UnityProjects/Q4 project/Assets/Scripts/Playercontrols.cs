@@ -14,8 +14,12 @@ private int jumpsRemaining;
     [SerializeField] private float jumpForce;
     [SerializeField] private bool isGrounded;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float checkRadius = 0.2f;
+    private bool isWallSliding;
+    private float wallslidingspeed = 2f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
