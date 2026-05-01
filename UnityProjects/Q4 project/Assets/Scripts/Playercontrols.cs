@@ -19,6 +19,12 @@ private int jumpsRemaining;
     [SerializeField] private float checkRadius = 0.2f;
     private bool isWallSliding;
     private float wallslidingspeed = 2f;
+    private bool iswalljumping;
+    private float walljumpingdirection;
+    private float walljumpingtime = 0.2f;
+    private float walljumpingcounter;
+    private float walljumpingduration = 0.4f;
+    private Vector2 walljumpingpower = new Vector2(8f, 16f);
 
     private void Awake()
     {
@@ -55,6 +61,27 @@ private int jumpsRemaining;
         }
         
     }
+    
+    private void Walljump()
+    {
+        if (isWallSliding)
+        {
+            iswalljumping = false;
+            walljumpingdirection = -transform.localScale.x;
+            walljumpingcounter = walljumpingtime;
+        }
+        else
+        {
+            walljumpingcounter -= Time.deltaTime;
+        }
+        if (playerInputActions.("WallJump") && (isWallSliding || walljumpingcounter > 0f))
+        {
+            iswalljumping = true;
+            rb.linearVelocity = new Vector2(walljumpingdirection * walljumpingpower.x, walljumpingpower.y);
+            walljumpingcounter = 0f;
+        }
+    }
+
     private void Update()
     {
         // isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
