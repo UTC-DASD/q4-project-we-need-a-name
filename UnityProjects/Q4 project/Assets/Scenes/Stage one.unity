@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 440761904}
   m_Layer: 0
   m_Name: Test cube (17)
-  m_TagString: Untagged
+  m_TagString: Walljump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2027,6 +2027,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1713298584}
+  - {fileID: 1408069505}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &898908223
@@ -2074,7 +2075,7 @@ MonoBehaviour:
   jumpForce: 5
   isGrounded: 0
   groundCheck: {fileID: 1713298584}
-  wallCheck: {fileID: 0}
+  wallCheck: {fileID: 1408069505}
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -2844,7 +2845,7 @@ GameObject:
   - component: {fileID: 1155467910}
   m_Layer: 0
   m_Name: Test cube (15)
-  m_TagString: Untagged
+  m_TagString: Walljump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3241,6 +3242,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1418932248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1408069504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1408069505}
+  - component: {fileID: 1408069506}
+  m_Layer: 0
+  m_Name: Wallcheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1408069505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408069504}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.57, y: -0.37, z: 0}
+  m_LocalScale: {x: 0.91200083, y: 0.054927718, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 898908222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1408069506
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408069504}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2514212
+  m_Height: 35.14868
+  m_Direction: 1
+  m_Center: {x: -0.26552626, y: 6.5817723, z: 0}
 --- !u!1 &1418932247
 GameObject:
   m_ObjectHideFlags: 0
@@ -4392,7 +4448,7 @@ GameObject:
   - component: {fileID: 1786494415}
   m_Layer: 0
   m_Name: Test cube (14)
-  m_TagString: Untagged
+  m_TagString: Walljump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4803,7 +4859,7 @@ GameObject:
   - component: {fileID: 1925486023}
   m_Layer: 0
   m_Name: Test cube (16)
-  m_TagString: Untagged
+  m_TagString: Walljump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4940,7 +4996,7 @@ GameObject:
   - component: {fileID: 2020953019}
   m_Layer: 0
   m_Name: Test cube (3)
-  m_TagString: Untagged
+  m_TagString: Walljump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
