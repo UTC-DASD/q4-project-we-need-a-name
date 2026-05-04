@@ -74,7 +74,7 @@ private int jumpsRemaining;
         {
             walljumpingcounter -= Time.deltaTime;
         }
-        if (playerInputActions.("WallJump") && (isWallSliding || walljumpingcounter > 0f))
+        if (playerInputActions.actions["WallJump"].triggered && (isWallSliding || walljumpingcounter > 0f))
         {
             iswalljumping = true;
             rb.linearVelocity = new Vector2(walljumpingdirection * walljumpingpower.x, walljumpingpower.y);
@@ -82,6 +82,7 @@ private int jumpsRemaining;
         }
     }
 
+    
     private void Update()
     {
         // isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
@@ -97,6 +98,12 @@ private int jumpsRemaining;
         {
             jumpsRemaining = maxJumps;
             isGrounded = true;
+            
+        }
+        if (collision.gameObject.CompareTag("Walljump"))
+        {
+            jumpsRemaining = maxJumps;
+            isGrounded = true;   
         }
     }
 }
