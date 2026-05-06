@@ -1,30 +1,25 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SpikeTrapController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float bounceForce = 10f; // Force to push the player up
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        ResetHealth();
-
-      spriteRender = GetComponent<spriteRender>();
-      GameController.OnReset += ResetHealth;
-      HealthItem.OnHealthCollect += Heal;
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (enemy)
+        if (other.CompareTag("Player"))
         {
-            TakeDamage (enemy.damage);
+            // Reset player Y velocity and bounce them up
+            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Reset Y
+                rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
+            }
+
+            // Call a damage function on the player's script
+            // other.GetComponent<PlayerController>().TakeDamage(1);
         }
-        Trap trap = collision.GetComponent<Trap>();
-        if (trap && trap.damage > 0)
-        {
-            TakeDamage(trap.damage);
-        }
-    }
+    } 
 }
