@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class Playercontrols : MonoBehaviour
@@ -105,6 +106,7 @@ private int jumpsRemaining;
             jumpsRemaining = maxJumps;
             isGrounded = true;   
         }
+      
     }
 }
 

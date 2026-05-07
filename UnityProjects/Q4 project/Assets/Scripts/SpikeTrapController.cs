@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class SpikeTrapController : MonoBehaviour
 {
@@ -17,9 +18,8 @@ public class SpikeTrapController : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Reset Y
                 rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
             }
-
-            // Call a damage function on the player's script
-            // other.GetComponent<PlayerController>().TakeDamage(1);
+           
+             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     } 
 }
