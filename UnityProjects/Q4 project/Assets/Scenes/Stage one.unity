@@ -4285,14 +4285,10 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
   m_Offset: {x: 0.118593216, y: 0.007546246}
 =======
   m_Offset: {x: 0, y: 0}
 >>>>>>> 518bf5d5435d9328c2a756214606a156028329ef
-=======
-  m_Offset: {x: -6.433029, y: -0.08538878}
->>>>>>> parent of 518bf5d (walls I'm in them)
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4307,12 +4303,8 @@ BoxCollider2D:
   m_EdgeRadius: 0
 =======
   m_Size: {x: 57.439735, y: 0.97658086}
-<<<<<<< HEAD
   m_EdgeRadius: 1
 >>>>>>> 518bf5d5435d9328c2a756214606a156028329ef
-=======
-  m_EdgeRadius: 0
->>>>>>> parent of 518bf5d (walls I'm in them)
 --- !u!23 &672570370
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5948,14 +5940,11 @@ Transform:
   - {fileID: 440761903}
   - {fileID: 2020953022}
 <<<<<<< HEAD
-<<<<<<< HEAD
   - {fileID: 376696304}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 =======
   - {fileID: 1847841600}
-=======
->>>>>>> parent of 518bf5d (walls I'm in them)
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &925327195
@@ -5972,7 +5961,7 @@ GameObject:
   - component: {fileID: 925327197}
   m_Layer: 0
   m_Name: Test cube (15)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9775,7 +9764,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!1 &1828244979
 =======
 --- !u!1 &1847841599
@@ -10165,8 +10153,6 @@ SpriteRenderer:
   m_GameObject: {fileID: 1847841599}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 >>>>>>> 518bf5d5435d9328c2a756214606a156028329ef
-=======
->>>>>>> parent of 518bf5d (walls I'm in them)
 --- !u!1 &1875977836
 GameObject:
   m_ObjectHideFlags: 0
