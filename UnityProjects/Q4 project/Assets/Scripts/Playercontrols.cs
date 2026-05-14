@@ -106,6 +106,10 @@ private int jumpsRemaining;
             jumpsRemaining = maxJumps;
             isGrounded = true;   
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        { 
+            Destroy(gameObject);
+        }
       
     }
 }

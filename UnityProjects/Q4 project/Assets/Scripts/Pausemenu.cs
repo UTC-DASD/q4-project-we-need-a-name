@@ -48,7 +48,7 @@ public static bool isPaused;
 
     public void Restart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("sceneidx");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("currentsceneidx");
     }
     }
     
