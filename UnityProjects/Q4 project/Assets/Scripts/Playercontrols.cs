@@ -19,6 +19,8 @@ private int jumpsRemaining;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float checkRadius = 0.2f;
     private bool isWallSliding;
+    private Vector2 movementInput;
+    private bool isFacingRight = true;
     private float wallslidingspeed = 2f;
     private bool iswalljumping;
     private float walljumpingdirection;
@@ -63,6 +65,11 @@ private int jumpsRemaining;
         
     }
     
+    // Link this to your Input Action 'Move' via Unity Events or C# Events
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        movementInput = context.ReadValue<Vector2>();
+    }
     private void Walljump()
     {
         if (isWallSliding)
@@ -87,12 +94,36 @@ private int jumpsRemaining;
     private void Update()
     {
         // isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
-
+        CheckForFlip();
         if (isGrounded)
         {
             jumpsRemaining = maxJumps; // Reset jumps when isgrounded
         }
     }
+
+        private void CheckForFlip()
+    {
+        // If moving right and facing left OR moving left and facing right
+        if (movementInput.x > 0 && !isFacingRight)
+        {
+            Flip();
+        }
+        else if (movementInput.x < 0 && isFacingRight)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        
+        // Multiply the player's x local scale by -1
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
