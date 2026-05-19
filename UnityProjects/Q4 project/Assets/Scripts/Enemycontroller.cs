@@ -21,7 +21,7 @@ public class Enemycontroller : MonoBehaviour
     {
         if (player != null)
         {
-            navMeshAgent.SetDestination(player.position);  
+            //navMeshAgent.SetDestination(player.position);  
         }
 
 

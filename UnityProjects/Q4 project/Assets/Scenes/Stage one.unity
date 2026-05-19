@@ -2291,7 +2291,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.063, y: -0.13, z: 0}
-  m_LocalScale: {x: 1.286208, y: 2.4604456, z: 1}
+  m_LocalScale: {x: 1.3076878, y: 2.6038897, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 898908222}
@@ -6543,7 +6543,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5, y: 0, z: 0}
-  m_LocalScale: {x: 1.0265057, y: 0.9121112, z: 1}
+  m_LocalScale: {x: 1, y: 0.9121112, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 343547444}
@@ -6601,6 +6601,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   checkRadius: 0.2
+  playerSpriteRenderer: {fileID: 343547445}
 --- !u!114 &898908226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6630,7 +6631,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 898908225}
         m_TargetAssemblyTypeName: Playercontrols, Assembly-CSharp
-        m_MethodName: HorizontalMove
+        m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6765,8 +6766,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: -0.23378749}
+  m_Size: {x: 1.1949654, y: 1.5324125}
   m_Direction: 0
 --- !u!1 &907718615
 GameObject:
@@ -10501,9 +10502,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2514212
-  m_Height: 35.14868
+  m_Height: 25.744215
   m_Direction: 1
-  m_Center: {x: -0.26552626, y: 6.5817723, z: 0}
+  m_Center: {x: -0.26552626, y: 1.8795391, z: 0}
 --- !u!1 &1418932247
 GameObject:
   m_ObjectHideFlags: 0
@@ -12314,7 +12315,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 0.2
+  m_Height: 20
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1721232821

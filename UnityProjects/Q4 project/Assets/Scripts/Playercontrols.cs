@@ -1,6 +1,8 @@
+using UnityEngine.SceneManagement;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEditor.Tilemaps;
 public class Playercontrols : MonoBehaviour
 
 {
@@ -10,7 +12,7 @@ public class Playercontrols : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] private float playerSpeed;
     [SerializeField] private int maxJumps = 2; // e.g., 2 for a double jump
-private int jumpsRemaining;
+    private int jumpsRemaining;
     private Vector2 moveInput;
     [SerializeField] private float jumpForce;
     [SerializeField] private bool isGrounded;
@@ -19,8 +21,6 @@ private int jumpsRemaining;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float checkRadius = 0.2f;
     private bool isWallSliding;
-    private Vector2 movementInput;
-    private bool isFacingRight = true;
     private float wallslidingspeed = 2f;
     private bool iswalljumping;
     private float walljumpingdirection;
@@ -28,6 +28,7 @@ private int jumpsRemaining;
     private float walljumpingcounter;
     private float walljumpingduration = 0.4f;
     private Vector2 walljumpingpower = new Vector2(8f, 16f);
+    public SpriteRenderer playerSpriteRenderer;
 
     private void Awake()
     {
@@ -49,10 +50,6 @@ private int jumpsRemaining;
         rb.linearVelocity = new Vector2(moveInput.x * playerSpeed, rb.linearVelocity.y);
     }
 
-    public void HorizontalMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();  
-    }
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed && jumpsRemaining > 0) 
@@ -68,7 +65,16 @@ private int jumpsRemaining;
     // Link this to your Input Action 'Move' via Unity Events or C# Events
     public void OnMove(InputAction.CallbackContext context)
     {
-        movementInput = context.ReadValue<Vector2>();
+        moveInput = context.ReadValue<Vector2>();
+
+        if(moveInput.x < 0 )
+        {
+            playerSpriteRenderer.flipX = true;
+        }
+        else if (moveInput.x > 0)
+        {
+            playerSpriteRenderer.flipX = false;
+        }
     }
     private void Walljump()
     {
@@ -93,35 +99,12 @@ private int jumpsRemaining;
     
     private void Update()
     {
+
         // isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
-        CheckForFlip();
         if (isGrounded)
         {
-            jumpsRemaining = maxJumps; // Reset jumps when isgrounded
+            jumpsRemaining = maxJumps;  // Reset jumps when isgrounded
         }
-    }
-
-        private void CheckForFlip()
-    {
-        // If moving right and facing left OR moving left and facing right
-        if (movementInput.x > 0 && !isFacingRight)
-        {
-            Flip();
-        }
-        else if (movementInput.x < 0 && isFacingRight)
-        {
-            Flip();
-        }
-    }
-
-    private void Flip()
-    {
-        isFacingRight = !isFacingRight;
-        
-        // Multiply the player's x local scale by -1
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -139,7 +122,8 @@ private int jumpsRemaining;
         }
         if (collision.gameObject.CompareTag("Enemy"))
         { 
-            Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // restart the level when colliding with an enemy
         }
       
     }
