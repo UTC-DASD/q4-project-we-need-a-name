@@ -115,6 +115,11 @@ public class Playercontrols : MonoBehaviour
             isGrounded = true;
             
         }
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            jumpsRemaining = maxJumps;
+            isGrounded = true;
+        }
         if (collision.gameObject.CompareTag("Walljump"))
         {
             jumpsRemaining = maxJumps;

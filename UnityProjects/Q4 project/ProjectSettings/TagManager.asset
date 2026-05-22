@@ -8,6 +8,7 @@ TagManager:
   - Walljump
   - Spiketrap
   - Enemy
+  - Obstacle
   layers:
   - Default
   - TransparentFX

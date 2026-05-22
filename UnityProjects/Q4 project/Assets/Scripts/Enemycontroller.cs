@@ -12,9 +12,13 @@ public class Enemycontroller : MonoBehaviour
     
     public Transform player;
     [SerializeField] private bool isGrounded;
-     public SpriteRenderer enemySpriteRenderer;
+     public SpriteRenderer EnemySpriteRenderer;
     public float speed = 2f;
     public float jumpForce = 5f;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    public float checkRadius = 0.2f;
+
     Rigidbody2D rb;
     private Vector2 moveInput;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,12 +46,22 @@ public class Enemycontroller : MonoBehaviour
 
         if(moveInput.x < 0 )
         {
-            enemySpriteRenderer.flipX = true;
+            EnemySpriteRenderer.flipX = true;
         }
         else if (moveInput.x > 0)
         {
-            enemySpriteRenderer.flipX = false;
+            EnemySpriteRenderer.flipX = false;
         }
+    }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed && isGrounded) 
+        {
+             // Add a ground check here for better feel
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isGrounded = false;
+        }
+        
     }
  private void OnCollisionEnter2D(Collision2D collision)
     {    
