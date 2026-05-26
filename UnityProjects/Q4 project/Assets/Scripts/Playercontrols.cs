@@ -2,7 +2,6 @@ using UnityEngine.SceneManagement;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEditor.Tilemaps;
 public class Playercontrols : MonoBehaviour
 
 {
@@ -21,12 +20,11 @@ public class Playercontrols : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float checkRadius = 0.2f;
     private bool isWallSliding;
-    private float wallslidingspeed = 2f;
     private bool iswalljumping;
     private float walljumpingdirection;
     private float walljumpingtime = 0.2f;
     private float walljumpingcounter;
-    private float walljumpingduration = 0.4f;
+    
     private Vector2 walljumpingpower = new Vector2(8f, 16f);
     public SpriteRenderer playerSpriteRenderer;
 

@@ -34,9 +34,9 @@ public string CurrentSceneName;
     public void Quit()
     { Application.Quit();}
     
-    public void MainMenu()
+    public void mainmenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("mainmenu");
     }
 
     public void Restart()
