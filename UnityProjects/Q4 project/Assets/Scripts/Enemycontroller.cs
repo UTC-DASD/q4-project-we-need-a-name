@@ -18,41 +18,34 @@ public class Enemycontroller : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float checkRadius = 0.2f;
-
     Rigidbody2D rb;
     private Vector2 moveInput;
+    private Vector2 enemyPosition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if(transform.position.x > enemyPosition.x)
+        {
+            EnemySpriteRenderer.flipX = false;
+        }
+        else if (transform.position.x < enemyPosition.x)
+        {
+            EnemySpriteRenderer.flipX = true;
+        }
+
         if (player != null)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);  
         }
-    }
-    void FixedUpdate()
-    {
-        rb.linearVelocity = new Vector2(moveInput.x * speed, rb.linearVelocity.y);
-    }
-     public void OnMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
 
-        if(moveInput.x < 0 )
-        {
-            EnemySpriteRenderer.flipX = true;
-        }
-        else if (moveInput.x > 0)
-        {
-            EnemySpriteRenderer.flipX = false;
-        }
+        enemyPosition = transform.position;
     }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed && isGrounded) 
